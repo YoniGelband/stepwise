@@ -125,6 +125,24 @@ button { font: inherit; color: inherit; }
   transition: opacity 0.2s; }
 .video .bigplay svg { width: 30px; height: 30px; fill: #fff; margin-left: 4px; }
 .video.playing .bigplay { opacity: 0; }
+/* The cover hides YouTube's own screens: the poster until the clip first plays, then a
+   dark veil while paused (YouTube shows its title and "More videos" then). Loading
+   ("buffering") is not paused, so the veil stays off. The end screen (.end) is solid black. */
+.video .cover { position: absolute; inset: 0; background: #000 center / cover no-repeat; pointer-events: none; transition: opacity 0.25s; }
+.video .cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgb(0 0 0 / 0.55), rgb(0 0 0 / 0.1) 60%); }
+.video.started .cover { background-image: none !important; background-color: rgb(0 0 0 / 0.82); }
+.video.started .cover::after { display: none; }
+.video.playing .cover, .video.started:not(.paused) .cover { opacity: 0; }
+/* Full screen: the real API where the phone has it; on iPhone, which only lets a bare
+   <video> go full screen, the player is stretched over the whole page instead. */
+.video:fullscreen { margin: 0; border-radius: 0; width: 100%; height: 100%; aspect-ratio: auto; }
+.video.full { position: fixed; inset: 0; z-index: 50; margin: 0; border-radius: 0; aspect-ratio: auto; }
+/* Keep our controls clear of the notch and the home bar. */
+.video.full .pills { top: calc(10px + env(safe-area-inset-top, 0px)); right: calc(10px + env(safe-area-inset-right, 0px)); }
+.video.full .clock { bottom: calc(12px + env(safe-area-inset-bottom, 0px)); left: calc(12px + env(safe-area-inset-left, 0px)); }
+.video.full .line { bottom: env(safe-area-inset-bottom, 0px); }
+.video.full input.scrub { bottom: calc(-10px + env(safe-area-inset-bottom, 0px)); }
+body.lock { overflow: hidden; }
 .video .pills { position: absolute; top: 10px; right: 10px; display: flex; gap: 6px; }
 .pill-sm { min-width: 44px; height: 32px; padding: 0 10px; border-radius: 99px; border: 0; cursor: pointer;
   background: rgb(0 0 0 / 0.5); color: #fff; font: 700 0.85rem var(--body); }
@@ -135,7 +153,7 @@ button { font: inherit; color: inherit; }
 .video .line i { display: block; height: 100%; width: 0; background: var(--tone); }
 .level.black .video .line i { background: #fff; }
 .video input.scrub { position: absolute; left: 0; right: 0; bottom: -10px; width: 100%; height: 28px; margin: 0; opacity: 0; cursor: pointer; }
-.video .end { position: absolute; inset: 0; background: rgb(0 0 0 / 0.62); display: grid; place-content: center;
+.video .end { position: absolute; inset: 0; background: #000; display: grid; place-content: center;
   gap: 12px; padding: 16px; text-align: center; color: #fff; }
 .video .end p { margin: 0; font: 800 1.2rem var(--display); }
 .video .end .pills-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
@@ -406,11 +424,13 @@ function renderLevel(n) {
   app.innerHTML = levelShell(n, `
     <div class="video" id="video">
       <div class="yt" id="yt"></div>
+      <div class="cover" style="background-image:url('https://i.ytimg.com/vi/${esc(v.id)}/hqdefault.jpg')"></div>
       <div class="shield" id="shield"></div>
       <div class="bigplay">${ICON.play}</div>
       <div class="pills">
         <button class="pill-sm" id="cc" aria-pressed="false" aria-label="Captions">CC</button>
         <button class="pill-sm" id="speed" aria-label="Playback speed">1×</button>
+        <button class="pill-sm" id="fs" aria-label="Full screen">⤢</button>
       </div>
       <span class="clock" id="clock">0:00 / ${clock(v.end - v.start)}</span>
       <div class="line"><i id="line"></i></div>
@@ -510,7 +530,8 @@ function showTasks(n) {
 
 // ---- The locked player ------------------------------------------------------------
 // YouTube's own controls are off and a clear "shield" covers the video, so playback stays
-// inside the clip: tapping plays or pauses, and the thin line only reaches across the clip.
+// inside the clip: tapping plays or pauses, a double tap goes full screen, and the thin
+// line only reaches across the clip.
 let apiReady = null;
 function loadYouTube() {
   if (!apiReady) apiReady = new Promise((resolve) => {
@@ -548,17 +569,29 @@ async function setUpPlayer(v) {
                   start: v.start, end: v.end, origin: location.origin, cc_load_policy: state.captions ? 1 : 0, cc_lang_pref: "en" },
     events: {
       onReady: () => { state.ready = true; state.yt.setPlaybackRate(Number(speed)); },
-      onError: (e) => { clockEl.textContent = "This video can't play here (error " + e.data + ")."; },
+      onError: (e) => { state.failed = true; clockEl.textContent = "This video can't play here (error " + e.data + ")."; },
       onStateChange: (e) => {
-        if (e.data === YT.PlayerState.PLAYING && !state.captionsSet) { state.captionsSet = true; setCaptions(state.captions); }
+        if (e.data === YT.PlayerState.PLAYING) {
+          box.classList.add("started");
+          if (!state.captionsSet) { state.captionsSet = true; setCaptions(state.captions); }
+        }
       },
     },
   });
 
-  document.getElementById("shield").onclick = () => {
-    if (!state.ready) return;
+  const togglePlay = () => {
+    if (!state.ready || player !== state) return;      // the player may be gone after leaving the screen
     if (state.yt.getPlayerState() === YT.PlayerState.PLAYING) state.yt.pauseVideo(); else state.yt.playVideo();
   };
+  // A single tap waits a moment in case a second tap follows (a double tap means full screen).
+  // The very first tap plays at once: phones only allow starting a video straight from a tap.
+  let tapTimer = null;
+  document.getElementById("shield").onclick = () => {
+    if (tapTimer) { clearTimeout(tapTimer); tapTimer = null; toggleFull(box); return; }
+    if (!box.classList.contains("started")) { togglePlay(); tapTimer = setTimeout(() => { tapTimer = null; }, 300); return; }
+    tapTimer = setTimeout(() => { tapTimer = null; togglePlay(); }, 300);
+  };
+  document.getElementById("fs").onclick = () => toggleFull(box);
   cc.onclick = () => {
     state.captions = !state.captions;
     cc.setAttribute("aria-pressed", state.captions);
@@ -578,18 +611,35 @@ async function setUpPlayer(v) {
 
   // Four times a second: keep playback inside the clip and refresh the line and clock.
   playerTimer = setInterval(() => {
-    if (!state.ready) return;
+    if (!state.ready || state.failed) return;
     const pos = state.yt.getCurrentTime(), playing = state.yt.getPlayerState() === YT.PlayerState.PLAYING;
     if (playing && pos < v.start - 1) state.yt.seekTo(v.start, true);
     if (pos >= v.end - 0.3 && !state.finished) { state.yt.pauseVideo(); state.finished = true; end.hidden = false; }
     box.classList.toggle("playing", playing);
+    const ps = state.yt.getPlayerState();
+    box.classList.toggle("paused", ps === YT.PlayerState.PAUSED || ps === YT.PlayerState.CUED);
     const into = state.finished ? v.end - v.start : Math.min(Math.max(pos - v.start, 0), v.end - v.start);
     if (!state.dragging) { scrub.value = into; line.style.width = (into / (v.end - v.start)) * 100 + "%"; }
     clockEl.textContent = clock(into) + " / " + clock(v.end - v.start);
   }, 250);
 }
 
+function toggleFull(box) {
+  const real = document.fullscreenElement || document.webkitFullscreenElement;
+  if (real) { (document.exitFullscreen || document.webkitExitFullscreen).call(document); return; }
+  if (box.classList.contains("full")) { box.classList.remove("full"); document.body.classList.remove("lock"); return; }
+  const ask = box.requestFullscreen || box.webkitRequestFullscreen;
+  const fallback = () => { box.classList.add("full"); document.body.classList.add("lock"); };
+  if (!ask) { fallback(); return; }
+  new Promise((resolve) => resolve(ask.call(box))).then(() => {
+    if (!(document.fullscreenElement || document.webkitFullscreenElement)) { fallback(); return; }
+    try { screen.orientation.lock("landscape").catch(() => {}); } catch (e) {}
+  }).catch(fallback);
+}
+
 function stopPlayer() {
+  document.body.classList.remove("lock");
+  if (document.fullscreenElement) { try { document.exitFullscreen(); } catch (e) {} }
   clearInterval(playerTimer); playerTimer = null;
   if (player && player.yt && player.yt.destroy) { try { player.yt.destroy(); } catch (e) {} }
   player = null;
