@@ -15,7 +15,7 @@
       "tasks": [
         {
           "text": "Push with the free foot behind your heel edge and glide between pushes with the free foot resting on the board against the back binding.",
-          "pass": "Three pushes and a glide in a straight line without looking down.",
+          "pass": "3 pushes and a glide in a straight line, without looking down",
           "count": 1
         }
       ]
@@ -156,7 +156,7 @@
       "tasks": [
         {
           "text": "Drop the stop: finish one turn across the slope and go straight into the next. Keep each turn round and finish it before starting the next one.",
-          "pass": "Six linked turns at a steady speed, the same width left and right.",
+          "pass": "6 linked turns at a steady speed, the same width left and right",
           "count": 1
         }
       ]
@@ -173,7 +173,7 @@
       "tasks": [
         {
           "text": "Do the ski pole drill from the clip on linked turns on an easy run.",
-          "pass": "One full run of linked turns holding the drill posture on both edges.",
+          "pass": "A full run of linked turns, holding the drill posture on both edges",
           "count": 1
         }
       ]
@@ -190,17 +190,17 @@
       "tasks": [
         {
           "text": "You link skidded turns down a blue run without stopping, at a speed you chose.",
-          "pass": "One blue run, top to bottom, no stops.",
+          "pass": "A blue run, top to bottom, no stops",
           "count": 1
         },
         {
           "text": "You can stop quickly on either edge.",
-          "pass": "Quick stops, one on each edge",
+          "pass": "Quick stops, 1 on each edge",
           "count": 2
         },
         {
           "text": "You hold the ski pole posture through linked turns: stacked, open, no counter-rotation.",
-          "pass": "One full run of linked turns holding the posture on both edges.",
+          "pass": "A full run of linked turns, holding the posture on both edges",
           "count": 1
         },
         {
@@ -278,7 +278,7 @@
       "tasks": [
         {
           "text": "Find a wide section of the run. Carve a traverse, flatten the board so the nose drifts downhill, then re-engage the same edge and carve back up.",
-          "pass": "Carving leaves on one wide section, 2 on each edge",
+          "pass": "Carving leaves on the same wide section, 2 on each edge",
           "count": 4
         }
       ]
@@ -316,13 +316,13 @@
       },
       "tasks": [
         {
-          "text": "Link two carves: finish one carve across the slope and roll straight into the next, with no stop and no pivot.",
+          "text": "Link 2 carves: finish one carve across the slope and roll straight into the next, with no stop and no pivot.",
           "pass": "S-shapes of 2 carves, without stopping in between",
           "count": 3
         },
         {
           "text": "Link carves down a whole blue run, keeping the turns the same size on both sides.",
-          "pass": "6 linked carves in a row, without skidding to slow down.",
+          "pass": "6 linked carves in a row, without skidding to slow down",
           "count": 1
         }
       ]
