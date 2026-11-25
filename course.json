@@ -1,0 +1,331 @@
+{
+  "title": "Snowboarding: first slides to carving (Malcolm Moore)",
+  "goal": "Carve linked turns with an unbroken pencil-line S track, controlling speed with turn shape",
+  "teacher": "Malcolm Moore",
+  "levels": [
+    {
+      "title": "Skating, front foot strapped in",
+      "why": "Strapping in and skating are how you move on the flat and get on and off lifts.",
+      "video": {
+        "id": "lpx2kH96L_A",
+        "start": 0,
+        "end": 119,
+        "title": "HOW TO SNOWBOARD with REAL BEGINNERS - FIRST TIME to LINKING TURNS"
+      },
+      "tasks": [
+        {
+          "text": "Push with the free foot behind your heel edge and glide between pushes with the free foot resting on the board against the back binding.",
+          "pass": "Three pushes and a glide in a straight line without looking down.",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "title": "One-foot straight glide",
+      "why": "Straight running teaches where your weight belongs: posture is the foundation of everything after.",
+      "video": {
+        "id": "lpx2kH96L_A",
+        "start": 119,
+        "end": 269,
+        "title": "HOW TO SNOWBOARD with REAL BEGINNERS - FIRST TIME to LINKING TURNS"
+      },
+      "tasks": [
+        {
+          "text": "Front foot strapped, back foot on the board against the back binding, weight slightly on the front foot, eyes on where you are going, down a gentle slope.",
+          "pass": "Glide to a full stop without falling",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "title": "Toe-side side slip",
+      "why": "The side slip is your first brake and your first feel for an edge. Malcolm starts on the toes: it is easier to stand up, and the heel edge then comes as a reward.",
+      "video": {
+        "id": "lpx2kH96L_A",
+        "start": 606,
+        "end": 840,
+        "title": "HOW TO SNOWBOARD with REAL BEGINNERS - FIRST TIME to LINKING TURNS"
+      },
+      "tasks": [
+        {
+          "text": "Facing uphill. Sink down with your knees bent and pushed out wide, shins pressing into the front of your boots, hips forward. Ease off by standing up a little to let the board slide; sink back down into your boots to grip and stop. Don't lift your heels with your calves: let your posture tilt the board.",
+          "pass": "Full stops without falling",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "title": "Heel-side side slip",
+      "why": "The same brake on the heel edge: hips back, like sitting down on a chair.",
+      "video": {
+        "id": "MOZWm1BFUVg",
+        "start": 380,
+        "end": 414,
+        "title": "How to Snowboard for Beginners // Your First Turns, Step by Step"
+      },
+      "tasks": [
+        {
+          "text": "Board across the slope, facing downhill. Sink down with your hips back, as if starting to sit on a chair behind you, shoulders stacked over your hips, knees pushed out. Ease off by standing up a little to let the board slide; sink back down to grip and stop. Don't lift your toes: let your posture tilt the board.",
+          "pass": "Full stops without falling",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "title": "Diagonal side slip, toe side",
+      "why": "Moving across the slope on one edge is the first step towards turning.",
+      "video": {
+        "id": "lpx2kH96L_A",
+        "start": 944,
+        "end": 1048,
+        "title": "HOW TO SNOWBOARD with REAL BEGINNERS - FIRST TIME to LINKING TURNS"
+      },
+      "tasks": [
+        {
+          "text": "From a toe-side side slip, facing uphill, put a little more weight on one foot and the board drifts that way across the slope. Then the other foot, the other way. Look over your leading shoulder at where you are heading.",
+          "pass": "Whole bunny hills without falling, both directions, with controlled stops",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "title": "Diagonal side slip, heel side",
+      "why": "The same on the heel edge, facing downhill.",
+      "video": {
+        "id": "MOZWm1BFUVg",
+        "start": 454,
+        "end": 544,
+        "title": "How to Snowboard for Beginners // Your First Turns, Step by Step"
+      },
+      "tasks": [
+        {
+          "text": "Same drill on the heel edge, facing downhill: more weight on one foot to drift that way, then the other foot, the other way.",
+          "pass": "Whole bunny hills without falling, both directions, with controlled stops",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "title": "Falling leaf, both edges",
+      "why": "Letting the nose drop downhill and steering back is half a turn. The knee 'lever' analogy explains every turning movement from here on.",
+      "video": {
+        "id": "MOZWm1BFUVg",
+        "start": 650,
+        "end": 794,
+        "title": "How to Snowboard for Beginners // Your First Turns, Step by Step"
+      },
+      "tasks": [
+        {
+          "text": "From a diagonal slip, let the nose drop towards downhill until you pick up a little speed, then steer back across on the same edge. Repeat across the slope.",
+          "pass": "Bunny hills without falling, each leaf a bit further downhill than the last",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "title": "Single turns",
+      "why": "One full turn from one edge to the other, with a stop, before linking.",
+      "video": {
+        "id": "lpx2kH96L_A",
+        "start": 1521,
+        "end": 1717,
+        "title": "HOW TO SNOWBOARD with REAL BEGINNERS - FIRST TIME to LINKING TURNS"
+      },
+      "tasks": [
+        {
+          "text": "Single turn, heel to toe: traverse on heels, let the nose drop until the board points downhill on a flat base, then steer onto the toe edge and finish across the slope. Stop.",
+          "pass": "Turns with a stop on the toe edge",
+          "count": 5
+        },
+        {
+          "text": "Single turn, toe to heel: the same, starting on toes and finishing on heels.",
+          "pass": "Turns with a stop on the heel edge",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "title": "Linked turns",
+      "why": "Linking turns is the first major milestone of snowboarding.",
+      "video": {
+        "id": "lpx2kH96L_A",
+        "start": 1788,
+        "end": 1905,
+        "title": "HOW TO SNOWBOARD with REAL BEGINNERS - FIRST TIME to LINKING TURNS"
+      },
+      "tasks": [
+        {
+          "text": "Drop the stop: finish one turn across the slope and go straight into the next. Keep each turn round and finish it before starting the next one.",
+          "pass": "Six linked turns at a steady speed, the same width left and right.",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "title": "Posture: the ski pole drill",
+      "why": "Stacked, open posture on both edges is what carving is built on.",
+      "video": {
+        "id": "8lbRCTfZlTw",
+        "start": 375,
+        "end": 546,
+        "title": "CORRECT SNOWBOARD POSTURE WITH ONE SIMPLE DRILL"
+      },
+      "tasks": [
+        {
+          "text": "Do the ski pole drill from the clip on linked turns on an easy run.",
+          "pass": "One full run of linked turns holding the drill posture on both edges.",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "title": "Gate before carving",
+      "why": "Carving adds speed, and these are what keep it safe. Start the next stage only when all four are true.",
+      "video": {
+        "id": "KXPA79lWVZw",
+        "start": 59,
+        "end": 161,
+        "title": "From Beginner to Advanced Snowboard Turns – How to Improve Fast"
+      },
+      "tasks": [
+        {
+          "text": "You link skidded turns down a blue run without stopping, at a speed you chose.",
+          "pass": "One blue run, top to bottom, no stops.",
+          "count": 1
+        },
+        {
+          "text": "You can stop quickly on either edge.",
+          "pass": "Quick stops, one on each edge",
+          "count": 2
+        },
+        {
+          "text": "You hold the ski pole posture through linked turns: stacked, open, no counter-rotation.",
+          "pass": "One full run of linked turns holding the posture on both edges.",
+          "count": 1
+        },
+        {
+          "text": "Edge hold: cross the slope on one edge so the board leaves a thin line and does not slip downhill. Toe edge and heel edge.",
+          "pass": "Edge holds with no sideways slip, 2 on each side",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "title": "Edged traverse",
+      "why": "A carve is the board running along its edge with no sideways skid. The proof is always the track: a thin pencil line, not a wide smear.",
+      "video": {
+        "id": "VcQEMhLItBo",
+        "start": 332,
+        "end": 410,
+        "title": "How To Snowboard - 8 STEPS TO CARVING"
+      },
+      "tasks": [
+        {
+          "text": "Edged traverse, heel side: ride across the slope with the board on its heel edge so it does not slip downhill at all. Lean into the slope and bend the knees to find the balance point.",
+          "pass": "Clean lines on the heel edge",
+          "count": 5
+        },
+        {
+          "text": "Edged traverse, toe side: the same on the toe edge, shins into the boots.",
+          "pass": "Clean lines on the toe edge",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "title": "J turns",
+      "why": "Set the edge and let the sidecut turn the board for you.",
+      "video": {
+        "id": "Nn4LYbufIZE",
+        "start": 6,
+        "end": 209,
+        "title": "HOW TO CARVE ON A SNOWBOARD // Beginner Snowboard Tips"
+      },
+      "tasks": [
+        {
+          "text": "Start a traverse pointing slightly downhill, set the edge, and wait. The sidecut turns the board across the slope and then uphill until you stop. Both edges.",
+          "pass": "J turns, 5 on each side",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "title": "Edge change control",
+      "why": "This is where most people stall: rolling onto the downhill edge feels like catching an edge, so the back foot kicks round. These drills build the change in small steps.",
+      "video": {
+        "id": "v3uF5omcsKw",
+        "start": 125,
+        "end": 245,
+        "title": "I Teach This to Every Student Who Hates Cat Tracks / Skinny Paths"
+      },
+      "tasks": [
+        {
+          "text": "Ride on a flat base, set the edge and carve across the slope, then change edge early and let the new edge carve you round to a stop.",
+          "pass": "Edge changes to a stop, 3 on the heel edge and 3 on the toe edge",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "title": "Carving leaf",
+      "why": "The release: the first half of every edge change.",
+      "video": {
+        "id": "J2HYpOV-nYM",
+        "start": 154,
+        "end": 208,
+        "title": "Snowboard Edge Control Drills (RANKED EASY TO HARD)"
+      },
+      "tasks": [
+        {
+          "text": "Find a wide section of the run. Carve a traverse, flatten the board so the nose drifts downhill, then re-engage the same edge and carve back up.",
+          "pass": "Carving leaves on one wide section, 2 on each edge",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "title": "Single carved turn",
+      "why": "Changing edge early, while still in the traverse, is essential for a carved turn.",
+      "video": {
+        "id": "KXPA79lWVZw",
+        "start": 166,
+        "end": 360,
+        "title": "From Beginner to Advanced Snowboard Turns – How to Improve Fast"
+      },
+      "tasks": [
+        {
+          "text": "Single carved turn, heel to toe: carve across on the heel edge, roll onto the toe edge while still crossing, count \"one, two\", and let it carve you round to a stop.",
+          "pass": "Heel-to-toe carved turns, each to a full stop",
+          "count": 3
+        },
+        {
+          "text": "Single carved turn, toe to heel: the same, starting on the toe edge and stopping on the heel edge.",
+          "pass": "Toe-to-heel carved turns, each to a full stop",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "title": "Linked carves",
+      "why": "Rocking from one edge straight into the next.",
+      "video": {
+        "id": "VcQEMhLItBo",
+        "start": 618,
+        "end": 741,
+        "title": "How To Snowboard - 8 STEPS TO CARVING"
+      },
+      "tasks": [
+        {
+          "text": "Link two carves: finish one carve across the slope and roll straight into the next, with no stop and no pivot.",
+          "pass": "S-shapes of 2 carves, without stopping in between",
+          "count": 3
+        },
+        {
+          "text": "Link carves down a whole blue run, keeping the turns the same size on both sides.",
+          "pass": "6 linked carves in a row, without skidding to slow down.",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}
