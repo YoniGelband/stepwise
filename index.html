@@ -110,9 +110,16 @@ button { font: inherit; color: inherit; }
 .round { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--card); color: var(--ink);
   display: grid; place-items: center; cursor: pointer; flex: none; box-shadow: 0 1px 3px rgb(15 42 68 / 0.12); }
 .round svg { width: 22px; height: 22px; }
-.where { display: grid; line-height: 1.2; min-width: 0; }
-.where .eyebrow { display: inline-flex; align-items: center; gap: 6px; }
-.where h2 { font-size: 1.35rem; font-weight: 800; }
+.bar-top { display: grid; grid-template-columns: 44px 1fr 44px; }
+.where { justify-self: center; display: inline-flex; align-items: center; gap: 8px; font-weight: 700;
+  font-size: 0.9rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+/* The level badge: the same piste marker as on the map, with the level number inside. */
+.badge { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%;
+  background: var(--tone); color: var(--tone-ink); font: 800 0.85rem var(--body); }
+.level.black .badge { border-radius: 4px; transform: rotate(45deg) scale(0.86); }
+.level.black .badge span { transform: rotate(-45deg); }
+.level-title { font-size: 1.75rem; font-weight: 800; padding-top: 4px; }
+.level-title.quiet { font-size: 1.05rem; font-weight: 700; color: var(--muted); font-family: var(--body); text-align: center; }
 
 /* The video runs edge to edge on a phone; on a wide screen it sits in the column with rounded corners. */
 .video { position: relative; aspect-ratio: 16 / 9; background: #000; overflow: hidden;
@@ -400,18 +407,17 @@ const ICON = {
   play: `<svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg>`,
 };
 
-function levelShell(n, body) {
+// Two rows: a slim bar (back, level badge) and the title on its own line. On the task
+// page the title is quiet, so the goals are the biggest thing on screen.
+function levelShell(n, body, quiet) {
   const level = course.levels[n - 1], stage = stageOf(n);
   return `
     <section class="level ${stage.colour}">
       <div class="bar-top">
         <button class="round" id="back" aria-label="Back to the run">${ICON.back}</button>
-        <div class="where">
-          <span class="eyebrow"><i class="dot ${stage.colour === "black" ? "diamond" : ""}" style="background:var(--piste-${stage.colour})"></i>
-            Level ${n} · ${esc(stage.name)}</span>
-          <h2>${esc(level.title)}</h2>
-        </div>
+        <div class="where"><span class="badge"><span>${n}</span></span>Level ${n} of ${course.levels.length}</div>
       </div>
+      <h2 class="level-title ${quiet ? "quiet" : ""}">${esc(level.title)}${quiet ? " · tasks" : ""}</h2>
       ${body}
     </section>`;
 }
@@ -493,7 +499,7 @@ function showTasks(n) {
   app.innerHTML = levelShell(n, `
     <div class="goals" id="goals">${level.tasks.map(goalHtml).join("")}</div>
     ${level.video ? `<button class="skip" id="rewatch">Watch the video again</button>` : ""}
-    <div class="dock"><button class="pill go wide" id="complete"></button></div>`);
+    <div class="dock"><button class="pill go wide" id="complete"></button></div>`, true);
   window.scrollTo(0, 0);
   document.getElementById("back").onclick = () => { location.hash = ""; };
   const rewatch = document.getElementById("rewatch");
